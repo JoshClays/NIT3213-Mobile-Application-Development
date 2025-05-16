@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.josh_s8066611finalassignment.R
+import com.example.josh_s8066611finalassignment.ui.dashboard.DashboardActivity
 import com.example.josh_s8066611finalassignment.viewmodel.LoginViewModel
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +43,11 @@ class LoginActivity : AppCompatActivity() {
             result.onSuccess { keypass ->
                 errorText.visibility = View.GONE
                 Toast.makeText(this, "Login Success. Keypass: $keypass", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this, DashboardActivity::class.java)
+                intent.putExtra("KEYPASS", keypass)
+                startActivity(intent)
+
             }
             result.onFailure {
                 errorText.visibility = View.VISIBLE
