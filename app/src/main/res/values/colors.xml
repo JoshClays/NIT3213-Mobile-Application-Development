@@ -2,4 +2,34 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+
+    <!-- Material 3 colors -->
+    <color name="md_theme_primary">#B4A5FF</color>
+    <color name="md_theme_onPrimary">#2D2276</color>
+    <color name="md_theme_primaryContainer">#433A8E</color>
+    <color name="md_theme_onPrimaryContainer">#E6DEFF</color>
+
+    <color name="md_theme_secondary">#CAC2DC</color>
+    <color name="md_theme_onSecondary">#332E42</color>
+    <color name="md_theme_secondaryContainer">#4A4559</color>
+    <color name="md_theme_onSecondaryContainer">#E6DFF8</color>
+
+    <color name="md_theme_tertiary">#EFB8C8</color>
+    <color name="md_theme_onTertiary">#492532</color>
+    <color name="md_theme_tertiaryContainer">#633B48</color>
+    <color name="md_theme_onTertiaryContainer">#FFD8E4</color>
+
+    <color name="md_theme_surface">#1C1B21</color>
+    <color name="md_theme_onSurface">#E6E1E6</color>
+    <color name="md_theme_surfaceVariant">#2A2A33</color>
+    <color name="md_theme_onSurfaceVariant">#CAC4D0</color>
+    <color name="md_theme_surfaceContainerHighest">#2D2B35</color>
+
+    <color name="md_theme_outline">#938F99</color>
+    <color name="md_theme_outlineVariant">#49454F</color>
+
+    <!-- Custom accent colors -->
+    <color name="md_theme_genreText">#7FCFCF</color>
 </resources>

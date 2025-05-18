@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Josh_s8066611 Final Assignment</string>
+    <string name="app_name">Josh_s8066611FinalAssignment</string>
+    <string name="dashboard_title">📚 Books Collection</string>
+    <string name="dashboard_subtitle">Discover Timeless Classics</string>
 </resources>
