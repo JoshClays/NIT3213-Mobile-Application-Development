@@ -1,4 +1,9 @@
 package com.example.josh_s8066611finalassignment.data.model
 
-data class LoginResponse (val keypass: String)
+import com.google.gson.annotations.SerializedName
+
+data class LoginResponse(
+    @SerializedName("keypass")
+    val keypass: String
+)
 

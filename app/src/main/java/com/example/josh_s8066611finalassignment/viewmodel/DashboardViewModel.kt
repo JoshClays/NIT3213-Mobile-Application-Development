@@ -10,14 +10,29 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * DashboardViewModel handles the business logic for the dashboard screen.
+ * Responsibilities include:
+ * - Loading and managing the list of books
+ * - Error handling for data operations
+ * - Providing LiveData for UI updates
+ * Uses Hilt for dependency injection and Coroutines for async operations.
+ */
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
     private val dashboardRepository: DashboardRepository
 ) : ViewModel() {
 
+    // LiveData to observe the list of books and their loading state
     private val _entities = MutableLiveData<Result<List<EntityItem>>>()
     val entities: LiveData<Result<List<EntityItem>>> = _entities
 
+    /**
+     * Loads the dashboard data using the provided keypass.
+     * @param keypass The authentication token received from login
+     * Launches a coroutine to fetch data asynchronously and
+     * updates the entities LiveData with the result
+     */
     fun loadDashboard(keypass: String) {
         viewModelScope.launch {
             val result = dashboardRepository.getDashboard(keypass)

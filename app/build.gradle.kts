@@ -53,6 +53,12 @@ dependencies {
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.google.android.material:material:1.11.0")
 
+    // Testing Dependencies
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("app.cash.turbine:turbine:1.0.0") // For testing Flow
+
     // SwipeRefreshLayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
@@ -67,6 +73,7 @@ dependencies {
     // Retrofit for API calls
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     // Lifecycle ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")

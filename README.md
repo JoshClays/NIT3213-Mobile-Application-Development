@@ -1,63 +1,163 @@
 # NIT3213 Mobile Application Development – Final Assignment
 
-This repository contains the Android application developed as the final assignment for the NIT3213 Mobile Application Development unit at Victoria University. The application demonstrates proficiency in Android development, including user authentication, data retrieval from an API, and dynamic UI rendering. This project belongs to Student of Victoria University with ID s8066611 - Josh Clayton.
+This repository contains the Android application developed as the final assignment for the NIT3213 Mobile Application Development unit at Victoria University. The application demonstrates proficiency in Android development, including user authentication, data retrieval from an API, and dynamic UI rendering.
 
-## 📱 Features
+- 🔐 Secure user authentication
+- 📚 Browse book collection with pull-to-refresh functionality
+- 🎨 Material 3 design implementation
+- 📱 Responsive and intuitive UI
+- ⚡ Fast and efficient data loading
+- 🔄 Real-time updates with SwipeRefreshLayout
+- 📝 Detailed book information display
 
-* **User Authentication**: Allows users to log in using their credentials.
-* **Entity Dashboard**: Displays a list of entities retrieved from a remote API.
-* **Entity Details View**: Shows detailed information about a selected entity.
-* **Dynamic Field Detection**: Automatically identifies and displays relevant fields from the API response.
-* **Responsive UI**: Ensures compatibility across various device screen sizes.
-* **Material Design Implementation**:
-    * Custom-styled cards and components
-    * Sophisticated dark theme with carefully chosen color palette
-    * Enhanced typography using Montserrat font family
-    * Proper spacing and visual hierarchy
+## Technology Stack
 
-## 🛠️ Technologies & Dependencies
+- **Language**: Kotlin
+- **Architecture**: MVVM (Model-View-ViewModel)
+- **Dependency Injection**: Hilt
+- **Networking**: Retrofit with OkHttp
+- **Asynchronous Programming**: Kotlin Coroutines
+- **UI Components**: Material 3 Design
+- **Testing**: JUnit, MockK
+- **Custom Font**: Montserrat font family
 
-The application leverages modern Android development tools and libraries:
+## Prerequisites
 
-* **Kotlin**: Primary programming language.
-* **Android Jetpack Components**:
-    * **ViewModel**: Manages UI-related data in a lifecycle-conscious way.
-    * **LiveData**: Provides data that is lifecycle-aware.
-* **Retrofit**: Handles HTTP requests and integrates with the API.
-* **Gson**: Parses JSON data from the API responses.
-* **Hilt**: Facilitates dependency injection.
-* **Coroutines**: Manages asynchronous tasks.
-* **Material Design Components**: Implements modern Android UI elements.
-* **Custom Fonts**: Montserrat font family integration.
+- Android Studio Arctic Fox or later
+- JDK 11 or later
+- Android SDK with minimum API level 24
+- Gradle 7.0 or later
 
-## ⚙️ Setup Instructions
+## Setup and Installation
 
-To set up and run the application locally:
+There are several ways to obtain and set up the project:
 
-1. **Clone Repository**  
-   git clone https://github.com/JoshClays/NIT3213-Mobile-Application-Development.git  
-   cd NIT3213-Mobile-Application-Development
-2. **Open in Android Studio**
-    * Open the project directory using Android Studio.
-    * Sync Gradle files if prompted.
-    * Run the app on an emulator or physical device.
+### Method 1: Clone with Git
 
-## 🎨 Design Choices
+1. Open a terminal and run:
+   ```bash
+   git clone https://github.com/JoshClays/NIT3213-Mobile-Application-Development.git
+   ```
 
-The application features a carefully crafted UI with:
+### Method 2: Download ZIP
 
-* **Color Scheme**:
-    * Dark theme background (#1C1B21)
-    * Turquoise accent color (#7FCFCF) for genre indicators
-    * High contrast text for better readability
+1. Visit the repository at https://github.com/JoshClays/NIT3213-Mobile-Application-Development
+2. Click the green "Code" button
+3. Select "Download ZIP"
+4. Extract the downloaded ZIP file to your desired location
 
-* **Typography**:
-    * Montserrat font family with multiple weights
-    * Proper text hierarchy and spacing
-    * Enhanced readability across all screens
+### Method 3: GitHub Desktop
 
-* **Layout**:
-    * Consistent 16dp corner radius
-    * Proper elevation and spacing
-    * Intuitive information hierarchy
-    * Person icon integration for author display
+1. Install GitHub Desktop from https://desktop.github.com/
+2. Click File > Clone Repository
+3. Select the URL tab
+4. Enter: https://github.com/JoshClays/NIT3213-Mobile-Application-Development.git
+5. Choose your local path
+6. Click "Clone"
+
+### After obtaining the project:
+
+1. Open Android Studio
+2. Select "Open an existing Android Studio project"
+3. Navigate to the project directory and click "OK"
+4. Wait for the Gradle sync to complete
+
+### Configure Dependencies
+
+Ensure all dependencies are properly downloaded:
+```gradle
+dependencies {
+    // Core Android dependencies
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    
+    // Hilt for dependency injection
+    implementation 'com.google.dagger:hilt-android:2.44'
+    
+    // Retrofit for networking
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    
+    // Other dependencies as specified in build.gradle
+}
+```
+
+### Final Setup
+
+1. Configure your local.properties file with any necessary API keys or configurations
+2. Ensure all required SDK components are installed through Android Studio's SDK Manager
+3. Sync project with Gradle files if needed
+
+## Building and Running
+
+1. Connect an Android device or start an emulator
+
+2. Select 'app' from the run configurations dropdown
+
+3. Click the 'Run' button (or press Shift + F10)
+
+## Testing
+
+The application includes comprehensive unit tests for core components:
+
+- Repository Tests
+- ViewModel Tests
+- API Service Tests
+
+To run tests:
+
+1. Right-click on the test directory
+2. Select 'Run Tests'
+   or
+   Run `./gradlew test` from the command line
+
+## Project Structure
+
+```
+app/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/josh_s8066611finalassignment/
+│   │   │   ├── data/
+│   │   │   │   ├── api/
+│   │   │   │   ├── model/
+│   │   │   ├── di/
+│   │   │   ├── repository/
+│   │   │   ├── ui/
+│   │   │   │   ├── dashboard/
+│   │   │   │   ├── details/
+│   │   │   │   ├── login/
+│   │   │   ├── viewmodel/
+│   │   ├── res/
+│   │   │   ├── layout/
+│   │   │   ├── values/
+│   ├── test/
+│   │   ├── java/
+```
+
+## Architecture
+
+The app follows the MVVM architecture pattern:
+
+- **Model**: Data classes and repositories
+- **View**: Activities and custom views
+- **ViewModel**: Business logic and state management
+
+## Contributing
+
+This is a final assignment project. No contributions are currently accepted.
+
+## License
+
+This project is created for educational purposes as part of a university assignment.
+
+## Author
+
+Josh - s8066611
+
+## Acknowledgments
+
+- Material 3 Design Guidelines
+- Android Development Best Practices
+- Modern Android Development Techniques

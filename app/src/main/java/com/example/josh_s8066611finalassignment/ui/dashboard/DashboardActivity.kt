@@ -14,6 +14,14 @@ import com.example.josh_s8066611finalassignment.viewmodel.DashboardViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * DashboardActivity displays the list of books in a RecyclerView.
+ * Features include:
+ * - Pull-to-refresh functionality
+ * - Book item click navigation to details
+ * - Error handling with Snackbar
+ * Uses Material 3 design components and follows MVVM architecture.
+ */
 @AndroidEntryPoint
 class DashboardActivity : AppCompatActivity() {
 
@@ -27,6 +35,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        // Get keypass from intent, finish activity if not provided
         keypass = intent.getStringExtra("KEYPASS") ?: run {
             finish()
             return
@@ -37,12 +46,19 @@ class DashboardActivity : AppCompatActivity() {
         loadData()
     }
 
+    /**
+     * Initializes and configures the UI components:
+     * - RecyclerView with LinearLayoutManager
+     * - SwipeRefreshLayout for pull-to-refresh
+     * - EntityAdapter for displaying book items
+     */
     private fun setupViews() {
         recyclerView = findViewById(R.id.recyclerView)
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
 
         // Initialize adapter with empty list
         entityAdapter = EntityAdapter(emptyList()) { entity ->
+            // Navigate to details screen on item click
             val intent = Intent(this, DetailsActivity::class.java)
             intent.putExtra("ENTITY_ITEM", entity)
             startActivity(intent)
@@ -51,20 +67,27 @@ class DashboardActivity : AppCompatActivity() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DashboardActivity)
             setHasFixedSize(true)
-            adapter = entityAdapter // Set the adapter immediately
+            adapter = entityAdapter
         }
 
+        // Configure pull-to-refresh
         swipeRefreshLayout.setOnRefreshListener {
             loadData()
         }
     }
 
+    /**
+     * Sets up observers for the ViewModel's LiveData:
+     * - Updates the UI when new data is received
+     * - Handles success and error states
+     * - Shows error messages using Snackbar
+     */
     private fun setupObservers() {
         viewModel.entities.observe(this) { result ->
             swipeRefreshLayout.isRefreshing = false
             
             result.onSuccess { list ->
-                // Create new adapter with the data
+                // Update adapter with new data
                 entityAdapter = EntityAdapter(list) { entity ->
                     val intent = Intent(this, DetailsActivity::class.java)
                     intent.putExtra("ENTITY_ITEM", entity)
@@ -82,6 +105,10 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Loads dashboard data from the ViewModel
+     * Shows loading indicator while data is being fetched
+     */
     private fun loadData() {
         swipeRefreshLayout.isRefreshing = true
         viewModel.loadDashboard(keypass)
